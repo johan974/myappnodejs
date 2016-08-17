@@ -9,6 +9,10 @@ var error = { "error" : "" };
 var file = __dirname + "/" + "phones.json";
 var debug = false; 
 
+// Initializing address and port
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+
 // Handling POST messages
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json()
@@ -198,15 +202,20 @@ app.get('/user/*', function (req, res) {
 })
 // http://127.0.0.1:8081/user/5
 
+http.createServer(app).listen(app.get('port') ,app.get('ip'), function () {
+    console.log("✔ Express server listening at %s:%d ", app.get('ip'),app.get('port'));
+    server();
+});
+
 //	var server = app.listen(8081, function () {
-var server = app.listen(process.env.OPENSHIFT_NODEJS_IP, process.env.OPENSHIFT_NODEJS_PORT || 8080, function () {
+// var server = app.listen( server_ip_address = process.env.OPENSHIF‌​T_NODEJS_IP || '127.0.0.1', process.env.OPENSHIFT_NODEJS_PORT || 8080, function () {
 
-	var host = process.env.OPENSHIFT_NODEJS_IP;
-	var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+	// var host = process.env.OPENSHIF‌​T_NODEJS_IP || '127.0.0.1';
+	// var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-  //	var host = server.address().address
-  //	var port = server.address().port
+  	//	var host = server.address().address
+  	//	var port = server.address().port
 
-  console.log("Example app listening at http://%s:%s", host, port)
+  // console.log("Example app listening at http://%s:%s", host, port)
 
-})
+// })
