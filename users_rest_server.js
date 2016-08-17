@@ -10,5 +10,5 @@ http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
 });
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.send('Hello Johan Holtman. Leuk dat je even komt kijken.!');
 });
