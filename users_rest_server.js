@@ -10,5 +10,5 @@ http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
 });
 
 app.get('/', function (req, res) {
-  res.send('Hello Johan Holtman. Leuk dat je even komt kijken.!\n✔ Express server listening at %s:%d ', app.get('ip'),app.get('port'));
+  res.send('Hello Johan Holtman. Leuk dat je even komt kijken.!\n✔ Express server listening at ' + app.get('ip') + ', server port ' + app.get('port'));
 });
