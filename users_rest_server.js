@@ -198,7 +198,8 @@ app.get('/user/*', function (req, res) {
 })
 // http://127.0.0.1:8081/user/5
 
-var server = app.listen(8081, function () {
+//	var server = app.listen(8081, function () {
+var server = app.listen(process.env.OPENSHIFT_NODEJS_IP, process.env.OPENSHIFT_NODEJS_PORT || 8080, function () {
 
 	var host = process.env.OPENSHIFT_NODEJS_IP;
 	var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
